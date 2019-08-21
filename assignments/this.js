@@ -1,10 +1,10 @@
 /* The for principles of "this";
 * in your own words. explain the four principle for the "this" keyword below.
 *
-* 1. Window or global object binding will reference entire browser or local file
-* 2. Implicit Binding- 80% of uses cases, where invoked to the left of the "."
-* 3. New Binding
-* 4. Explicit binding
+* 1. Window or global object- binding will reference entire browser or local file
+* 2. Implicit Binding- 80% of uses cases, 'this' is to the left of the "." where invoked
+* 3. New Binding- points to 'this' when creating a new instance of an object
+* 4. Explicit binding- 'this' points to a value by explicitly naming it/passing it in as param/attribute. This case when using call, apply or bind.
 *
 * write out a code example of each explanation above
 */
