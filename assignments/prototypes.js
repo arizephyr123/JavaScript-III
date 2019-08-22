@@ -26,6 +26,11 @@ GameObject.prototype.destroy = function () {
   return `${this.name} was removed from the game.`;
 };
 
+//stretch prototype function
+GameObject.prototype.status = function () {
+  return `${this.name} has ${this.healthPoints} Health Points.`;
+};
+
 /*
   === CharacterStats ===
   * healthPoints
@@ -72,18 +77,6 @@ Humanoid.prototype.greet = function () {
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
   * Instances of CharacterStats should have all of the same properties as GameObject.
 */
-
-// function CSChild(childAttributes) {
-//   CharacterStats.call(this, childAttributes); // binding this to Person
-//   this.CharacterStats.takeDamage = childAttributes.takeDamage; // this will be a special attribute to Child
-// }
-
-// function CharacterStats(childAttributes) {
-//   GameObject.call(this, childAttributes); // binding this to Person
-//   this.GameObject.destroy = childAttributes.destroy; // this will be a special attribute to Child
-// }
-// CharacterStats.prototype = Object.create(GameObject.prototype);
-// CSChild.prototype = Object.create(CharacterStats.prototype);
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
@@ -154,3 +147,64 @@ Humanoid.prototype.greet = function () {
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  //==================
+  //vilian constructor
+  function Villian(attributes) {
+    Humanoid.call(this, attributes);
+  }
+
+  Villian.prototype = Object.create(Humanoid.prototype);//passing Humanoid properties
+
+  //villian function
+  Villian.prototype.hit = function () {
+    return `${this.name} cast an Alohamorah spell.`;
+  };
+
+//==================
+//Hero Constructor:
+  function Hero(attributes) {
+    Humanoid.call(this, attributes);
+  }
+
+  Hero.prototype = Object.create(Humanoid.prototype);
+  Hero.prototype.defend = function () {
+    return `${this.name} has defended an attack!`;
+  };
+
+//create Object instances
+  const goodWizard = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 10,
+    name: 'Harry Potter',
+    team: 'Gryffindor,',
+    weapons: [
+      'Magic Wand',
+    ],
+    language: 'English',
+  });
+
+  const evilWizard = new Villian({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 15,
+    name: 'Lord Voldemort',
+    team: 'Slytherin',
+    weapons: [
+      'Magic Wand',
+    ],
+    language: 'English',
+  });
+
+  
+  console.log(evilWizard.hit());//
+  console.log(goodWizard.defend()); // 
