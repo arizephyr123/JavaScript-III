@@ -205,6 +205,12 @@ Humanoid.prototype.greet = function () {
     language: 'English',
   });
 
-  
+  console.log("****Stretch actions below****")
   console.log(evilWizard.hit());//
   console.log(goodWizard.defend()); // 
+  console.log(goodWizard.status());
+  console.log(evilWizard.status());
+  console.log(archer.status());
+  console.log(swordsman.status());
+  console.log(mage.status());
+
